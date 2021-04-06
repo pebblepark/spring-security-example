@@ -1,9 +1,6 @@
 package com.spring.security.example.user.service;
 
-import com.spring.security.example.user.dao.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
-
-    User findByUid(String uid);
-
+public interface UserService extends UserDetailsService{
 }
