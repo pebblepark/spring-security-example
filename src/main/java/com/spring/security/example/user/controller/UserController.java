@@ -17,11 +17,15 @@ public class UserController {
 	this.userSerivce = userService;
     }
     
-    @ResponseBody
-    @GetMapping("/user/{uid}")
-    public User findUser(@PathVariable String uid) {
-	User user = userSerivce.findByUid(uid);
-	return user;
+    @GetMapping("/login")
+    public String loginPage() {
+	return "loginForm";
     }
+    
+    @GetMapping("/main")
+    public String mainPage() {
+	return "main";
+    }
+    
 
 }
