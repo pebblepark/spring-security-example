@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	return null;
+	return Optional.ofNullable(userMapper.loadUserByUsername(username)).orElseThrow(() -> new UsernameNotFoundException("아이디가 존재하지 않습니다."));
     }
     
 

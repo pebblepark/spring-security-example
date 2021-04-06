@@ -9,6 +9,6 @@ import com.spring.security.example.user.dao.User;
 @Repository
 public interface UserMapper {
 
-    User findByUid(String uid);
+    User loadUserByUsername(String username);
 
 }
