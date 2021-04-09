@@ -61,6 +61,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	.invalidateHttpSession(true);
 	
 	http
+	.authorizeRequests()
+	.antMatchers("/", "/login").permitAll()
+	.antMatchers("/main").hasRole("USER")
+	.antMatchers("/admin").hasRole("ADMIN")
+	.anyRequest().authenticated();
+	
+	http
 	.authenticationProvider(authenticationProvider);
 	
     }
