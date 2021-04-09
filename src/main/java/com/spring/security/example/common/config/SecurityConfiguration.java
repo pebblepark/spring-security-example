@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,6 +13,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.spring.security.example.common.security.CustomAccessDeniedHandler;
 import com.spring.security.example.user.service.UserService;
 
 @Configuration
@@ -27,6 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     
     @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
+    
+    @Autowired
+    private CustomAccessDeniedHandler customAccessDeniedHandler;
     
     @Autowired
     private UserService userService;
@@ -66,6 +69,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	.antMatchers("/main").hasRole("USER")
 	.antMatchers("/admin").hasRole("ADMIN")
 	.anyRequest().authenticated();
+	
+	http
+	 .exceptionHandling()
+         .accessDeniedHandler(customAccessDeniedHandler);
+	
 	
 	http
 	.authenticationProvider(authenticationProvider);
