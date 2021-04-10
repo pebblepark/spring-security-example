@@ -9,7 +9,7 @@ public class WebConfiguration extends WebMvcConfigurationSupport{
 
     @Override
     protected void addViewControllers(ViewControllerRegistry registry) {
-	registry.addRedirectViewController("/", "/login");
+	    registry.addRedirectViewController("/", "/login");
     }
 
     

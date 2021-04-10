@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
-<meta charset="EUC-KR">
+<meta>
 <title>Login</title>
 </head>
 <body>
 <form action="/loginProcess" method="POST">
-	ID : <input type="text" name="username"><br>
-	PW : <input type="password" name="password"><br>
+	ID : <input type="text" name="username"/><br>
+	PW : <input type="password" name="password"/><br>
+	<input type="checkbox" name="remember-me"/> Remember me<br>
 	<input type="submit" value="login">
 </form>
 </body>
