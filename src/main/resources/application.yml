@@ -4,13 +4,18 @@ spring:
     url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: 1234
+  jpa:
+    properties.hibernate:
+      hbm2ddl.auto: update
+      format_sql: true
+    showSql: true
+    generate-ddl: true
 
-    
-mybatis:
-  type-aliases-package: com.spring.security.example.**.dao
-  # mapper-locations: classpath:com/spring/security/example/**/sql/*Mapper.xml
-  configuration:
-    map-underscore-to-camel-case: true
+#mybatis:
+#  type-aliases-package: com.spring.security.example.**.dao
+#  # mapper-locations: classpath:com/spring/security/example/**/sql/*Mapper.xml
+#  configuration:
+#    map-underscore-to-camel-case: true
     
 server:
   port: 8888

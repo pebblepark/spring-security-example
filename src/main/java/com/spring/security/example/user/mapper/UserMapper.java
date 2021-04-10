@@ -2,9 +2,8 @@ package com.spring.security.example.user.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 
-import com.spring.security.example.user.dao.User;
+import com.spring.security.example.user.entity.User;
 
 @Mapper
 public interface UserMapper {
