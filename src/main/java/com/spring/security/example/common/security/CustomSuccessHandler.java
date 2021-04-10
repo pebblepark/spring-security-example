@@ -15,21 +15,21 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomSuccessHandler implements AuthenticationSuccessHandler{
+public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-	    Authentication authentication) throws IOException, ServletException {
-	List<String> authorities = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
-	String location = null;
-	if(authorities.contains("ROLE_USER")) {
-	    location = "/main";
-	}
-	if(authorities.contains("ROLE_ADMIN")) {
-	    location = "/admin";
-	}
-	
-	response.sendRedirect(location);
+                                        Authentication authentication) throws IOException, ServletException {
+        List<String> authorities = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+        String location = null;
+        if (authorities.contains("ROLE_USER")) {
+            location = "/main";
+        }
+        if (authorities.contains("ROLE_ADMIN")) {
+            location = "/admin";
+        }
+
+        response.sendRedirect(location);
 
     }
 

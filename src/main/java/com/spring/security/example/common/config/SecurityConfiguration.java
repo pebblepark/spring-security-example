@@ -48,37 +48,37 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http
-        .formLogin()
-        .loginPage("/login")
-        .loginProcessingUrl("/loginProcess")
-        .usernameParameter("username")
-        .passwordParameter("password")
-        .successHandler(authenticationSuccessHandler)
-        .failureHandler(authenticationFailureHandler);
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/loginProcess")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler);
 
         http
-        .logout()
-        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/")
-        .invalidateHttpSession(true)
-        .deleteCookies("JSESSIONID", "REMEMBER-ME");
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID", "REMEMBER-ME");
 
         http
-        .authorizeRequests()
-        .antMatchers("/", "/login").permitAll()
-        .antMatchers("/main").hasRole("USER")
-        .antMatchers("/admin").hasRole("ADMIN")
-        .anyRequest().authenticated();
+                .authorizeRequests()
+                .antMatchers("/", "/login").permitAll()
+                .antMatchers("/main").hasRole("USER")
+                .antMatchers("/admin").hasRole("ADMIN")
+                .anyRequest().authenticated();
 
         http
-        .exceptionHandling()
-        .accessDeniedHandler(customAccessDeniedHandler);
+                .exceptionHandling()
+                .accessDeniedHandler(customAccessDeniedHandler);
 
         http
-        .rememberMe()
-        .key("rmkey")
-        .tokenValiditySeconds(60 * 60 * 24 * 7 * 2)    // 2주
-        .userDetailsService(userService);
+                .rememberMe()
+                .key("rmkey")
+                .tokenValiditySeconds(60 * 60 * 24 * 7 * 2)    // 2주
+                .userDetailsService(userService);
 
 //	http
 //	.authenticationProvider(authenticationProvider);

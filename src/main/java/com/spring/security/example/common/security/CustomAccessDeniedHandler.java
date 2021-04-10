@@ -14,7 +14,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException exception) throws IOException {
-	System.out.println(exception.getMessage());
-	response.sendRedirect("/login");
+        System.out.println(exception.getMessage());
+        response.sendRedirect("/login");
     }
 }
