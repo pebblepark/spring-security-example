@@ -8,7 +8,7 @@ spring:
     
 mybatis:
   type-aliases-package: com.spring.security.example.**.dao
-  mapper-locations: classpath:com/spring/security/example/**/sql/*Mapper.xml
+  # mapper-locations: classpath:com/spring/security/example/**/sql/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
     
